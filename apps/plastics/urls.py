@@ -1,5 +1,5 @@
 from rest_framework import routers
-from .api import CategoryViewSet, PresentationViewSet, PlasticViewSet
+from .viewsets import CategoryViewSet, PresentationViewSet, PlasticViewSet
 
 router = routers.DefaultRouter()
 

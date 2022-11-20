@@ -1,5 +1,5 @@
 from rest_framework import routers
-from .api import OriginViewSet, User_PlasticViewSet
+from .viewsets import OriginViewSet, User_PlasticViewSet
 
 router = routers.DefaultRouter()
 
