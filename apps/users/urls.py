@@ -3,6 +3,6 @@ from .api import UserViewSet
 
 router = routers.DefaultRouter()
 
-router.register('api/users', UserViewSet, 'users')
+router.register('', UserViewSet, 'users')
 
 urlpatterns = router.urls

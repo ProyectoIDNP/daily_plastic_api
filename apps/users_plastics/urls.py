@@ -3,7 +3,7 @@ from .api import OriginViewSet, User_PlasticViewSet
 
 router = routers.DefaultRouter()
 
-router.register('api/origins', OriginViewSet, 'origenes')
-router.register('api/users/plastics', User_PlasticViewSet, 'users_plastics')
+router.register('origins', OriginViewSet, 'origenes')
+router.register('', User_PlasticViewSet, 'users_plastics')
 
 urlpatterns = router.urls

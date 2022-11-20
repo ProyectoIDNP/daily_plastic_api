@@ -20,9 +20,9 @@ from django.views.static import serve
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('apps.users.urls')),
-    path('', include('apps.users_plastics.urls')),
-    path('', include('apps.plastics.urls')),
+    path('api/users/', include('apps.users.urls')),
+    path('api/users/plastics/', include('apps.users_plastics.urls')),
+    path('api/plastics/', include('apps.plastics.urls')),
 ]
 
 urlpatterns += [
