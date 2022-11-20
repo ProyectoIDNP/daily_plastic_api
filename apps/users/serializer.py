@@ -5,3 +5,8 @@ class UserSerialzier(serializers.ModelSerializer):
   class Meta:
     model = User
     fields = '__all__'
+
+class UserTokenSerialzier(serializers.ModelSerializer):
+  class Meta:
+    model = User
+    fields = ('id', 'username')

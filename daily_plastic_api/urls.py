@@ -18,8 +18,12 @@ from django.urls import path, include, re_path
 from django.conf import settings
 from django.views.static import serve
 
+from apps.users.views import Login, Logout
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/auth/login/', Login.as_view(), name = 'login'),
+    path('api/auth/logout/', Logout.as_view(), name = 'logout'),
     path('api/users/plastics/', include('apps.users_plastics.urls')),
     path('api/plastics/', include('apps.plastics.urls')),
     path('api/users/', include('apps.users.urls')),

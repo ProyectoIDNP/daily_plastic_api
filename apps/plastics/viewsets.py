@@ -4,15 +4,15 @@ from .serializer import CategorySerialzier, PresentationSerialzier, PlasticSeria
 
 class CategoryViewSet(viewsets.ModelViewSet):
   queryset = Category.objects.all()
-  permission_classes = [permissions.AllowAny]
+  permission_classes = [permissions.IsAuthenticated]
   serializer_class = CategorySerialzier
 
 class PresentationViewSet(viewsets.ModelViewSet):
   queryset = Presentation.objects.all()
-  permission_classes = [permissions.AllowAny]
+  permission_classes = [permissions.IsAuthenticated]
   serializer_class = PresentationSerialzier
 
 class PlasticViewSet(viewsets.ModelViewSet):
   queryset = Plastic.objects.all()
-  permission_classes = [permissions.AllowAny]
+  permission_classes = [permissions.IsAuthenticated]
   serializer_class = PlasticSerialzier
