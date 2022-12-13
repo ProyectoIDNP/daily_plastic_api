@@ -19,11 +19,16 @@ from django.conf import settings
 from django.views.static import serve
 
 from apps.users.views import Login, Logout
+from apps.users_plastics.views import ReportCategoryUnit, ReportCategoryWeight, ReportPresentationUnit, ReportPresentationWeight
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/login/', Login.as_view(), name = 'login'),
     path('api/auth/logout/', Logout.as_view(), name = 'logout'),
+    path('api/report/categories/unit/', ReportCategoryUnit.as_view(), name = 'ReportCategoryUnit'),
+    path('api/report/categories/weight/', ReportCategoryWeight.as_view(), name = 'ReportCategoryWeight'),
+    path('api/report/presentations/unit/', ReportPresentationUnit.as_view(), name = 'ReportPresentationUnit'),
+    path('api/report/presentations/weight/', ReportPresentationWeight.as_view(), name = 'ReportPresentationWeight'),
     path('api/users/plastics/', include('apps.users_plastics.urls')),
     path('api/plastics/', include('apps.plastics.urls')),
     path('api/users/', include('apps.users.urls')),
