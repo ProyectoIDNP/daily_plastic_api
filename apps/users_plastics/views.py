@@ -17,10 +17,14 @@ class ReportCategoryUnit(APIView):
       if user is not None:
         consumptions = consumptions.filter(user=user)
       reportUnits = {}
-      for category in categories:
-        reportUnits[category.name] = 0
+      for index, category in enumerate(categories, start=1):
+        key = "category_" + str(index)
+        reportUnits[key] = {
+          "value": 0,
+          "label": category.name
+        }
         for consumption in consumptions.filter(plastic__category=category.id):
-          reportUnits[category.name] = reportUnits[category.name] + consumption.units
+          reportUnits[key]["value"] = reportUnits[key]["value"] + consumption.units
       return Response(reportUnits, status = status.HTTP_200_OK)
     except:
       return Response({'error': 'Error de formato'}, status = status.HTTP_400_BAD_REQUEST)  
@@ -37,10 +41,15 @@ class ReportCategoryWeight(APIView):
       if user is not None:
         consumptions = consumptions.filter(user=user)
       reportWeight = {}
-      for category in categories:
-        reportWeight[category.name] = 0
+
+      for index, category in enumerate(categories, start=1):
+        key = "category_" + str(index)
+        reportWeight[key] = {
+          "value": 0,
+          "label": category.name
+        }
         for consumption in consumptions.filter(plastic__category=category.id):
-          reportWeight[category.name] = reportWeight[category.name] + consumption.units * consumption.plastic.unit_weight
+          reportWeight[key]["value"] = reportWeight[key]["value"] + consumption.units * consumption.plastic.unit_weight
       return Response(reportWeight, status = status.HTTP_200_OK)
     except:
       return Response({'error': 'Error de formato'}, status = status.HTTP_400_BAD_REQUEST)
@@ -57,10 +66,14 @@ class ReportPresentationUnit(APIView):
       if user is not None:
         consumptions = consumptions.filter(user=user)
       reportUnits = {}
-      for presentation in presentations:
-        reportUnits[presentation.name] = 0
+      for index, presentation in enumerate(presentations, start=1):
+        key = "presentation_" + str(index)
+        reportUnits[key] = {
+          "value": 0,
+          "label": presentation.name
+        }
         for consumption in consumptions.filter(plastic__presentation=presentation.id):
-          reportUnits[presentation.name] = reportUnits[presentation.name] + consumption.units
+          reportUnits[key]["value"] = reportUnits[key]["value"] + consumption.units
       return Response(reportUnits, status = status.HTTP_200_OK)
     except:
       return Response({'error': 'Error de formato'}, status = status.HTTP_400_BAD_REQUEST)  
@@ -77,10 +90,14 @@ class ReportPresentationWeight(APIView):
       if user is not None:
         consumptions = consumptions.filter(user=user)
       reportWeight = {}
-      for presentation in presentations:
-        reportWeight[presentation.name] = 0
+      for index, presentation in enumerate(presentations, start=1):
+        key = "presentation_" + str(index)
+        reportWeight[key] = {
+          "value": 0,
+          "label": presentation.name
+        }
         for consumption in consumptions.filter(plastic__presentation=presentation.id):
-          reportWeight[presentation.name] = reportWeight[presentation.name] + consumption.units * consumption.plastic.unit_weight
+          reportWeight[key]["value"] = reportWeight[key]["value"] + consumption.units * consumption.plastic.unit_weight
       return Response(reportWeight, status = status.HTTP_200_OK)
     except:
       return Response({'error': 'Error de formato'}, status = status.HTTP_400_BAD_REQUEST)
